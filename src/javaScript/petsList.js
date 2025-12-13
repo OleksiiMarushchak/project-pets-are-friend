@@ -6,6 +6,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 const categoriesList = document.querySelector('.js-pet-list-categories');
 const petsListCards = document.querySelector('.js-pets-list-cards');
+const CategorieFilterBtn = document.querySelectorAll('.category-btn');
 
 let ALLPETS = [];
 
@@ -48,8 +49,11 @@ async function getPetsList() {
 
 // RENDERS----
 function renderCategories(categories) {
+  const allButton = `<li class="pets-list-categories-item">
+      <button class="category-btn" type="button" data-name="all">Всі</button>
+    </li>`;
   const markup = categories.map(renderCategorie).join('');
-  categoriesList.innerHTML = markup;
+  categoriesList.innerHTML = allButton + markup;
 }
 
 function renderCategorie(category) {
@@ -81,6 +85,7 @@ function createPetCard(pet) {
         class="pet-image"
         src="${pet.image || 'images/placeholder.jpg'}"
         alt="${pet.name}"
+        loading="lazy"
       >
 
       <div class="petlist-pet-content">
@@ -125,15 +130,19 @@ categoriesList.addEventListener('click', e => {
   if (e.target.classList.contains('category-btn')) {
     const selectedCategoryName = e.target.dataset.name;
 
+    if (selectedCategoryName === 'all') {
+      renderPetsList(ALLPETS);
+      e.target.classList.add('active');
+      return;
+    }
+
     const filteredPets = ALLPETS.filter(pet =>
       pet.categories?.some(pet => pet && pet.name === selectedCategoryName)
     );
 
     renderPetsList(filteredPets);
 
-    document
-      .querySelectorAll('.category-btn')
-      .forEach(btn => btn.classList.remove('active'));
+    CategorieFilterBtn.forEach(btn => btn.classList.remove('active'));
     e.target.classList.add('active');
   }
 });
