@@ -1,1 +1,23 @@
-/* styles for the pets list section */
+.pets-list-section {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.pets-list-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.pet-list-catergorys {
+  display: flex;
+}
+
+.pets-list-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
