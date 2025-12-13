@@ -1,0 +1,4 @@
+.pet-list-catergorys {
+  display: flex;
+  flex-direction: column;
+}
