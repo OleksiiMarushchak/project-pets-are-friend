@@ -135,6 +135,8 @@ window.addEventListener('resize', () => {
 });
 
 categoriesList.addEventListener('click', e => {
+  e.preventDefault();
+
   const button = e.target.closest('.category-btn');
   if (!button || !categoriesList.contains(button)) return;
 
