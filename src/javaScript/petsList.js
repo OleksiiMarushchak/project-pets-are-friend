@@ -52,18 +52,19 @@ function createPetCard(pet) {
         <div class="petlist-pet-content-about">
         <p class="petlist-pet-breed">${pet.species}</p>
             
-    
-            <h3 class="pet-name">${pet.name}</h3>
+            <h3 class="petlist-card-tag">${pet.name}</h3>
+
             <span class="petlist-pet-category">${
-              pet.categories?.[0]?.name || 'no category'
+              pet.categories?.[0]?.name || 'No category'
             }</span>
     
-            <p class="pet-meta">
-              ${pet.gender} • ${pet.age}
-            </p>
+            <ul class="petlist-pet-meta">
+              <li class="petlist-pet-meta-item">${pet.gender}</li>
+              <li class="petlist-pet-meta-item">${pet.age}</li>
+            </ul>
         </div>
 
-        <p class="pet-description">
+        <p class="petlist-pet-description">
           ${pet.shortDescription}
         </p>
 

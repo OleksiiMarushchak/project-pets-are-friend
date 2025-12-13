@@ -1,3 +1,28 @@
+/* COMMON---- */
+:root {
+  --second-family: 'Open Sans', sans-serif;
+  --color-neutral-darkest: #02060a;
+  --opacity-transparent: rgba(255, 255, 255, 0);
+  --opacity-neutral-darkest-5: rgba(2, 6, 10, 0.05);
+}
+
+.petlist-main-tag {
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.petlist-card-tag {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+/* ELEMENTS---- */
 .pets-list-section {
   display: flex;
   flex-direction: column;
@@ -10,6 +35,13 @@
   gap: 16px;
   justify-content: center;
   align-items: center;
+}
+
+.petlist-titles-text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
 }
 
 .pet-list-catergories {
@@ -58,5 +90,38 @@
 .petlist-pet-breed {
   font-weight: 400;
   font-size: 10px;
+  line-height: 1.5;
+}
+
+.petlist-pet-meta {
+  display: flex;
+  gap: 16px;
+}
+
+.petlist-pet-meta-item {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.petlist-pet-category {
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 1.5;
+  border: 1px solid var(--opacity-transparent);
+  background: var(--opacity-neutral-darkest-5);
+  border-radius: 100px;
+  padding: 4px 10px;
+  width: 56px;
+  height: 23px;
+  color: var(--color-neutral-darkest);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.petlist-pet-description {
+  font-weight: 400;
+  font-size: 12px;
   line-height: 1.5;
 }
