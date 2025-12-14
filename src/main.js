@@ -6,4 +6,3 @@ import './javaScript/FAQ.js'; /* Importing FAQ.js for FAQ section functionality 
 import './javaScript/successStories.js'; /* Importing successStories.js for success stories functionality */
 import './javaScript/footer.js'; /* Importing footer.js for footer functionality */
 import './javaScript/modal.js'; /* Importing modal.js for any modal */
-import './javaScript/animalDetailsModal.js'; /* Importing animalDetailsModal.js for animal details modal functionality */
