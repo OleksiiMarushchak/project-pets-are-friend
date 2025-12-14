@@ -1,1 +1,13 @@
 /* styles for the hero section */
+.hero {
+    min-height: 100vh;
+    background-image: url("../images/Rectangle6.jpg");
+    background-size: cover;
+    background-position: center;
+    }
+
+@media (min-resolution: 2dppx) {
+    .hero {
+        background-image: url("../images/Rectangle6@2x.jpg");
+    }
+}
