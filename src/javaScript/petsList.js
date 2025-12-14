@@ -39,6 +39,7 @@ async function getPetsList() {
     });
 
     ALLPETS = res.data.animals;
+    currentPets = ALLPETS;
 
     renderPetsList(ALLPETS);
   } catch (err) {

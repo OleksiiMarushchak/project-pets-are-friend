@@ -34,7 +34,7 @@
   letter-spacing: -0.01em;
 }
 
-/* ELEMENTS---- */
+/* CONTAINERS---- */
 .pets-list-section {
   display: flex;
   flex-direction: column;
@@ -49,58 +49,12 @@
   align-items: center;
 }
 
-.petlist-titles-text {
-  text-align: center;
-}
-
 .pets-list-categories {
   display: flex;
   flex-wrap: wrap;
   padding: 0 24px;
   justify-content: center;
   align-items: center;
-}
-
-.pets-list-categories li:nth-child(2) {
-  order: 8;
-}
-.pets-list-categories li:nth-child(3) {
-  order: 7;
-}
-.pets-list-categories li:nth-child(4) {
-  order: 4;
-}
-.pets-list-categories li:nth-child(5) {
-  order: 3;
-}
-.pets-list-categories li:nth-child(6) {
-  order: 2;
-}
-.pets-list-categories li:nth-child(7) {
-  order: 5;
-}
-.pets-list-categories li:nth-child(8) {
-  order: 6;
-}
-
-.category-btn {
-  font-size: 14px;
-  color: var(--color-neutral-darkest);
-  background-color: transparent;
-  border: none;
-  padding: 10px 15px;
-  width: 100%;
-  height: 41px;
-  border: 1px solid transparent;
-}
-
-.category-btn:hover {
-  transform: scale(1.1);
-}
-
-.category-btn.active {
-  background: var(--color-mariner-lighter);
-  border: 1px solid var(--opacity-transparent);
 }
 
 .pets-list-cards {
@@ -119,6 +73,13 @@
   background: #eee9e3;
 }
 
+/* ELEMENTS---- */
+/* TEXT---- */
+.petlist-titles-text {
+  text-align: center;
+}
+
+/* CARD---- */
 .pet-image {
   max-height: 245px;
   object-fit: fill;
@@ -150,10 +111,8 @@
   font-size: 10px;
 }
 
-.petlist-pet-categories {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
+.petlist-pet-description {
+  font-size: 12px;
 }
 
 .petlist-pet-category {
@@ -166,8 +125,54 @@
   height: 26px;
 }
 
-.petlist-pet-description {
-  font-size: 12px;
+.petlist-pet-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+/* CARDS ORDER IN LIST---- */
+.pets-list-categories li:nth-child(2) {
+  order: 8;
+}
+.pets-list-categories li:nth-child(3) {
+  order: 7;
+}
+.pets-list-categories li:nth-child(4) {
+  order: 4;
+}
+.pets-list-categories li:nth-child(5) {
+  order: 3;
+}
+.pets-list-categories li:nth-child(6) {
+  order: 2;
+}
+.pets-list-categories li:nth-child(7) {
+  order: 5;
+}
+.pets-list-categories li:nth-child(8) {
+  order: 6;
+}
+
+/* BUTTONS---- */
+.category-btn {
+  font-size: 14px;
+  color: var(--color-neutral-darkest);
+  background-color: transparent;
+  border: none;
+  padding: 10px 15px;
+  width: 100%;
+  height: 41px;
+  border: 1px solid transparent;
+}
+
+.category-btn:hover {
+  transform: scale(1.1);
+}
+
+.category-btn.active {
+  background: var(--color-mariner-lighter);
+  border: 1px solid var(--opacity-transparent);
 }
 
 .pet-more-btn {
@@ -189,10 +194,13 @@
 .showmore-btn {
   width: 335px;
   margin: 0 auto;
+  margin-top: 8px;
   border: 1px solid var(--mariner-dark);
   background-color: var(--mariner-dark);
   color: var(--white);
 }
+
+/* ADAPTATION---- */
 
 @media only screen and (min-width: 768px) {
   .container {
