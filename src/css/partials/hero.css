@@ -1,13 +1,130 @@
 /* styles for the hero section */
 .hero {
+    color: #fff;
     min-height: 100vh;
-    background-image: url("../images/Rectangle6.jpg");
+    background-image:
+        linear-gradient(to right,
+            rgba(0, 0, 0, 0.45) 0%,
+            rgba(0, 0, 0, 0.25) 50%,
+            rgba(0, 0, 0, 0) 100%),
+        url("../images/Rectangle6.jpg");
     background-size: cover;
-    background-position: center;
-    }
+    background-position: 90% center;
+    padding-top: 64px;
+}
 
 @media (min-resolution: 2dppx) {
     .hero {
-        background-image: url("../images/Rectangle6@2x.jpg");
+        background-image:
+            linear-gradient(to right,
+                rgba(0, 0, 0, 0.45) 0%,
+                rgba(0, 0, 0, 0.25) 50%,
+                rgba(0, 0, 0, 0) 100%),
+            url("../images/Rectangle6@2x.jpg");
     }
 }
+
+.hero-container {
+    width: 100%;
+    max-width: 335px;
+    margin: 0 auto;
+    padding-left: 16px;
+    padding-right: 16px;
+
+}
+
+.hero-title {
+    font-family: "Open Sans",
+        sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: #fff;
+    padding-bottom: 24px;
+}
+
+.hero-text {
+    font-family: "IBM Plex Sans",
+        sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #fff;
+    padding-bottom: 32px;
+}
+
+
+.hero-button {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.5;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    color: #fff;
+    border-radius: 8px;
+    border: 1px solid #88765c;
+    background-color: #88765c;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.hero-button:hover,
+.hero-button:focus {
+    background-color: #eee9e3;
+    color: #02060a;
+}
+
+@media screen and (min-width: 768px) {
+    .hero {
+        background-position: center;
+        padding-top: 64px;
+        padding-left: 32px;
+    }
+
+    .hero-container {
+        width: 622px;
+        height: 245px;
+        margin: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .hero-title {
+         width: 622px;
+    }
+
+    .hero-text{
+        width: 512px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .hero {
+        padding-top: 128px;
+        padding-left: 64px;
+    }
+
+.hero-container{
+    width: 622px;
+    height: auto;
+}
+
+.hero-title {
+    font-size: 56px;
+}
+
+.hero-text {
+    font-size: 18px;
+}
+
+
+.hero-button {
+    font-size: 16px;
+}
+}
+
+
