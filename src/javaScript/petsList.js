@@ -23,8 +23,6 @@ async function getPetsCategorie() {
 
     renderCategories(categories);
   } catch (err) {
-    console.log('Error', err);
-
     iziToast.error({
       title: 'Помилка',
       message: err.response?.data?.message || 'Неможливо завантажити дані',
