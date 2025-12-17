@@ -5,7 +5,7 @@ import{S as M,a as u,i as $,b as k,N as B,P as C}from"./assets/vendor-CCQeiz7G.j
                 <label for="phone">Телефон*</label>
                 <input type="text" name="phone" id="phone" placeholder="+38 (095) 555 99 22">
                 <label for="comment">Коментар</label>
-                <textarea type="textarea" name="comment" id="comment" placeholder="Напишіть ваш коментар"></textarea>
+                <textarea type="textarea"  name="comment" id="comment" placeholder="Напишіть ваш коментар"></textarea>
                <div class='order-controllers-container'> <button type="submit" class="dark">Надіслати</button></div>
             </form>`},listnerHandler(){const e=document.querySelector(".js-order-form");e.addEventListener("submit",async t=>{t.preventDefault();const s=new FormData(e),n={name:s.get("name").trim(),phone:s.get("phone").trim(),animalId:this.animalId};if(s.get("comment").trim()&&(n.comment=s.get("comment").trim()),!this.fieldsValidation(n))return;const o=await T(n);t.target.reset(),y.closeModal(),r.openSuccessAlert(`${n.name}, ${o.animalName} з нетерпінням чекає на зустріч.`)})},fieldsValidation(e){return e.name===""||e.phone===""?(r.errorAlert("Заповніть, будь ласка І'мя та Телефон."),!1):e.name.length>32?(r.errorAlert("Максимальна довжина І'мя не має перевищувати 32 символи."),!1):e.phone.match(/^[0-9]{12}$/)?e.comment&&e.comment.length>500?(r.errorAlert(`Максимальна довжина Коментаря не має перевищувати 500 символів. Зараз він ${e.comment.length} символів.`),!1):!0:(r.errorAlert("Телефон має складатися з 12 цифр."),!1)}},v={animalId:"",data:{},getMarkup(){return`<div class="animal-details-container js-animal-details-container">
     <div class="animal-details-img-container">
