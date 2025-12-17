@@ -4,22 +4,27 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/project-pets-are-friend/assets/favicon-CjHtpfgS.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Хатина Лапок</title>
+    <title>Хатинка Лапок</title>
 
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-      rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/3.0.1/modern-normalize.min.css"
       integrity="sha512-q6WgHqiHlKyOqslT/lgBgodhd03Wp4BEqKeW6nNtlOY4quzyG3VoQKFrieaCeSnuVseNKRGpGeDU3qPmabCANg=="
-      crossorigin="anonymous" referrerpolicy="no-referrer" />
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <script type="module" crossorigin src="/project-pets-are-friend/index.js"></script>
-    <link rel="modulepreload" crossorigin href="/project-pets-are-friend/assets/vendor-CLTxG5yw.js">
+    <link rel="modulepreload" crossorigin href="/project-pets-are-friend/assets/vendor-fWeRe5wa.js">
     <link rel="stylesheet" crossorigin href="/project-pets-are-friend/assets/vendor-DnveWo0P.css">
-    <link rel="stylesheet" crossorigin href="/project-pets-are-friend/assets/index-Bh_jQ8VK.css">
+    <link rel="stylesheet" crossorigin href="/project-pets-are-friend/assets/index-Bs2DA4rR.css">
   </head>
+
   <body>
     <!-- html for the header section -->
 
@@ -75,7 +80,7 @@
     </div>
     <main>
       <!-- html for the hero section -->
-      <section class="container pets-list-section">
+      <section class="container pets-list-section" id="petsList">
   <div class="pets-list-titles">
     <h2 class="petlist-main-tag">Наші хвостики</h2>
     <p class="petlist-titles-text">Вони дуже чекають на знайомство з вами</p>
@@ -150,11 +155,17 @@
   </svg>
 </footer>
 
-
-    <!-- html for the animal details modal -->
-    <!-- html for the order modal -->
-
-
+    <!-- html for the base modal -->
+<div class="modal-backdrop js-modal-backdrop is-hidden">
+  <div class="modal">
+    <button type="button" class="js-close-modal-btn close-modal-btn">
+      <svg class="close-modal-btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <use href="../images/sprite.svg#icon-close"></use>
+      </svg>
+    </button>
+    <div class="modal-content js-modal-content"></div>
+  </div>
+</div>
 
   </body>
 </html>
