@@ -71,7 +71,6 @@
 }
 
 .faq-accordion-content {
-  padding: 8px 16px 16px 16px;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -88,4 +87,5 @@
 }
 .faq-accordion-content > div {
   overflow: hidden;
+  padding: 0 16px;
 }
