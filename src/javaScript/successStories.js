@@ -1,14 +1,10 @@
 // scripts for the success stories section
 const reviewsList = document.querySelector(".swiper-wrapper.success-stories-lists");
-const reviewsNextButton = document.querySelector('.success-stories-button-next');
-const reviewsPrevButton = document.querySelector('.success-stories-button-prev');
-const reviewsPagination = document.querySelector(".success-stories-swiper-pagination");
-import spriteUrl from '../images/sprite.svg';
+import 'css-star-rating/css/star-rating.css';
 
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
 
-import Raty from 'raty-js';
 import axios from 'axios'
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
@@ -29,39 +25,42 @@ async function getFeedbacks({ page = 1, limit = 6 } = {}) {
   }
 }
 
-//raty svg
-const STAR_ON = `
-<svg width="20" height="20">
-    <use href="${spriteUrl}#icon-star-filled"></use>
-</svg>
-`;
-const STAR_OFF = `
-<svg width="20" height="20">
-  <use href="${spriteUrl}#icon-star-outline"></use>
-</svg>
-`;
-const STAR_HALF = `
-<svg width="20" height="20">
-  <use href="${spriteUrl}#icon-star-half"></use>
-</svg>
-`;
 
-//render feedbacks
 function createFeedbacks(feedbacks) {
-const markup = feedbacks.map(({ author, rate, description }) => `
-    <div class="swiper-slide success-stories-list">
-    <div
-  class="rating"
-  data-raty
-  data-rate="${rate}">
-</div>
-      <p class="success-stories-list-review">${description}</p>
-      <p class="success-stories-list-author">${author}</p>
-    </div>
-  `).join('');
-reviewsList.innerHTML = '';
-reviewsList.insertAdjacentHTML('beforeend', markup);
+  const markup = feedbacks.map(({ author, rate, description }) => {
+    const whole = Math.floor(rate);
+    const isHalf = rate % 1 === 0.5;
+    const ratingClass = `rating value-${whole} ${isHalf ? 'half' : ''}`;
+
+    const starSVG = `
+      <svg class="icon star-empty"><use href="../images/sprite.svg#iicon-star-outline"></use></svg>
+      <svg class="icon star-half"><use href="../images/sprite.svg#icon-star-half"></use></svg>
+      <svg class="icon star-filled"><use href="../images/sprite.svg#icon-star-filled"></use></svg>
+    `;
+
+    const stars = Array.from({ length: 5 })
+      .map(() => `<div class="star">${starSVG}</div>`)
+      .join('');
+
+    return `
+      <div class="swiper-slide success-stories-list">
+        <div class="${ratingClass} star-icon color-default">
+          <div class="star-container">
+            ${stars}
+          </div>
+        </div>
+        <p class="success-stories-list-review">${description}</p>
+        <p class="success-stories-list-author">${author}</p>
+      </div>
+    `;
+  }).join('');
+
+  reviewsList.innerHTML = '';
+  reviewsList.insertAdjacentHTML('beforeend', markup);
 }
+
+
+
 
 let swiper;
 
@@ -92,15 +91,26 @@ function initSwiper() {
   });
 }
 
+//rater-js
+// function initRatings() {
+//   const ratings = document.querySelectorAll('.rating');
 
+//   ratings.forEach(el => {
+//     const score = parseFloat(el.dataset.rate);
 
-function updateNavButtonsState() {
- reviewsPrevButton.disabled = params.page === 1;
-reviewsNextButton.disabled = params.page === params.maxPage;
+//     rater({
+//       element: el,
+//       max: 5,
+//       readOnly: true,
+//       rating: score,
+//       starSize: 20,
+//       step: 0.5,
+//       showToolTip: false,
+//       rateCallback: function() {}
+//     });
+//   });
+// }
 
-reviewsPrevButton.classList.toggle('is-disabled', params.page === 1);
-reviewsNextButton.classList.toggle('is-disabled', params.page === params.maxPage);
-}
 
 async function handleReviews() {
   try {
@@ -111,7 +121,9 @@ async function handleReviews() {
 
     initSwiper();
 
-    requestAnimationFrame(initRatings);
+// setTimeout(() => {
+//   requestAnimationFrame(initRatings);
+// }, 0);
 
   } catch (err) {
     iziToast.error({
@@ -124,23 +136,66 @@ async function handleReviews() {
 
 handleReviews();
 
-//Init Raty
-function initRatings() {
-  const ratings = document.querySelectorAll('[data-raty]');
-//   console.log('ratings found:', ratings.length);
-  
-  ratings.forEach(el => {
-    if (el.dataset.ratyInit) return;
-    el.dataset.ratyInit = 'true';
+//Init Raty version 2 
+// function initRatings() {
+//   const ratings = document.querySelectorAll('[data-raty]');
 
-    new Raty(el, {
-      score: Number(el.dataset.rate),
-      number: 5,
-      half: true,
-      readOnly: true,
-      starOn: STAR_ON,
-      starOff: STAR_OFF,
-      starHalf: STAR_HALF
-    });
-  });
-}
+//    ratings.forEach(el => {
+//     if (el.dataset.ratyInit) return;
+//     el.dataset.ratyInit = 'true';
+
+//     const rate = Number(el.dataset.rate);
+
+//     new Raty(el, {
+//       score: rate,
+//       number: 5,
+//       half: true,
+//       readOnly: true,
+//       starOff: '<span class="star-placeholder" data-type="off"></span>',
+//       starOn: '<span class="star-placeholder" data-type="on"></span>',
+//       starHalf: '<span class="star-placeholder" data-type="half"></span>'
+//     });
+
+//     patchStars(el);
+//   });
+//   console.log(spriteUrl);
+// console.log(`${spriteUrl}#icon-star-half`);
+// }
+
+//Init Raty old
+// function initRatings() {
+//   const ratings = document.querySelectorAll('[data-raty]');
+// //   console.log('ratings found:', ratings.length);
+  
+//   ratings.forEach(el => {
+//     if (el.dataset.ratyInit) return;
+//     el.dataset.ratyInit = 'true';
+
+//     new Raty(el, {
+//       score: Number(el.dataset.rate),
+//       number: 5,
+//       half: true,
+//       readOnly: true,
+//       starOn: STAR_ON,
+//       starOff: STAR_OFF,
+//       starHalf: STAR_HALF
+//     });
+//   });
+// }
+
+//raty svg
+// const STAR_ON = `
+// <svg class="star star-on" width="20" height="20">
+//     <use href="${spriteUrl}#icon-star-filled"></use>
+// </svg>
+// `;
+// const STAR_OFF = `
+// <svg class="star star-off" width="20" height="20">
+//   <use href="${spriteUrl}#icon-star-outline"></use>
+// </svg>
+// `;
+// const STAR_HALF = `
+// <svg class="star star-half" width="20" height="20">
+//   <use href="${spriteUrl}#icon-star-half"></use>
+// </svg>
+// `;

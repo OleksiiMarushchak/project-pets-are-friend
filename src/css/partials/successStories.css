@@ -1,6 +1,6 @@
 /* styles for the success stories section */
   .success-stories-section {
-  padding: 20px 64px;
+  padding: 64px 20px;
 }
 
 /* position button */
@@ -30,8 +30,8 @@ right: 0px;
 
 .success-stories-controls .swiper-button-prev,
 .success-stories-controls .swiper-button-next {
- position: static !important;
-  inset: auto !important;
+ position: static !important; 
+  inset: auto !important; 
   transform: none !important;
   margin: 0;
 }
@@ -93,18 +93,12 @@ font-size: var(--text-regular);
 
 .success-stories-swiper {
   width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
 }
 
 
 .success-stories-lists {
-  
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  margin-bottom: 80px;
-  display: flex; /* Swiper сам применяет, но явно указываем для надёжности */
+  margin-bottom: 110px;
 }
 
 .success-stories-list {
@@ -122,19 +116,88 @@ margin-bottom: 32px;
    font-weight: 600;
 }
 
-
-
-
-.rating {
-display: flex;
-gap: 4px;
-margin-bottom: 32px;
+/* rate */
+/* .rating {
+  --star-size: 20px;
+  --star-gap: 4px;
+  display: flex;
+  gap: var(--star-gap);
 }
 
-.rating svg {
+.rating .star {
+  width: var(--star-size);
+  height: var(--star-size);
+} */
+
+/* .rating {
+  display: flex;
+  gap: 4px;
+    margin-bottom: 32px;
+} */
+
+/* Звезды */
+ /* .star-rating .star-bg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin-bottom: 32px;
+} */
+
+
+ /* .star-rating .star-value {
+   background-color: var(--neutral-darkest) !important;
+} */
+
+
+.rating .star {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.rating .icon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  fill: var(--neutral-darkest, #000);
+  pointer-events: none;
+}
+
+/* Только один SVG будет виден */
+.star .star-empty,
+.rating.value-1 .star:nth-child(-n+1) .star-filled,
+.rating.value-1.half .star:nth-child(2) .star-half {
   display: block;
-  color: var(--neutral-darkest); /* один цвет для всех */
 }
+.star .star-filled,
+.star .star-half {
+  display: none;
+}
+
+/* Показать нужное число */
+/* === VALUE 1 === */
+.rating.value-1 .star:nth-child(-n+1) .star-filled { display: block; }
+.rating.value-1.half .star:nth-child(2) .star-half { display: block; }
+
+/* === VALUE 2 === */
+.rating.value-2 .star:nth-child(-n+2) .star-filled { display: block; }
+.rating.value-2.half .star:nth-child(3) .star-half { display: block; }
+
+/* === VALUE 3 === */
+.rating.value-3 .star:nth-child(-n+3) .star-filled { display: block; }
+.rating.value-3.half .star:nth-child(4) .star-half { display: block; }
+
+/* === VALUE 4 === */
+.rating.value-4 .star:nth-child(-n+4) .star-filled { display: block; }
+.rating.value-4.half .star:nth-child(5) .star-half { display: block; }
+
+/* === VALUE 5 === */
+.rating.value-5 .star:nth-child(-n+5) .star-filled { display: block; }
+/* 5.5 — не бывает, поэтому без half */
+
+
+
 .success-stories-swiper .swiper-button-next,
 .success-stories-swiper .swiper-button-prev {
   position: absolute;
@@ -150,8 +213,6 @@ margin-bottom: 32px;
 }
 
 .success-stories-button {
-  /* отступ снизу */
-
 display: flex;
 align-items: center;
 justify-content: center;
@@ -173,18 +234,20 @@ flex-shrink: 0;
   border: 1px solid var(--neutral-darkest);
 }
 
+/* rate */
 
-.is-disabled {
-  background-color: var(--mariner-lightest);
-  opacity: 0.5;
-  pointer-events: none;
-  cursor: default;
-}
+
+
 
 /* Tablet */
 @media only screen and (min-width: 768px) {
   .success-stories-section {
-  padding: 32px 64px;
+  padding: 80x 64px ;
+}
+
+.success-stories-lists {
+  margin-bottom: 120px;
+  /* display: flex; Swiper сам применяет, но явно указываем для надёжности */
 }
 
 }
@@ -192,9 +255,6 @@ flex-shrink: 0;
 /* Desktop */
 @media only screen and (min-width: 1440px) {
 
-  .success-stories-section {
-  padding: 80px 64px;
-}
 
 .success-stories-title {
         font-size: var( --heading-2);
