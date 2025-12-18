@@ -11,7 +11,7 @@ const notification = {
   successAllert(message) {
     '';
     Swal.fire({
-      title: 'Відправка успішна!',
+      title: 'Ми отримали вашого листа!',
       icon: 'success',
       text: message,
     });
