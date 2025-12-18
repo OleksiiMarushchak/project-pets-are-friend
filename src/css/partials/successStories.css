@@ -154,7 +154,7 @@ right: 0px;
   height: 6px;
   background-color: #cfcfcf;
   border-radius: 50%;
-  opacity: 1; /* важно */
+  opacity: 1;
   transition: all 0.3s ease;
 }
 .success-stories-swiper-pagination .swiper-pagination-bullet-active {
@@ -206,26 +206,19 @@ flex-shrink: 0;
 /* Tablet */
 @media only screen and (min-width: 768px) {
   .success-stories-section {
-  padding: 80x 64px ;
+  padding: 80px 64px ;
+}
+
+.success-stories-title {
+  font-size: 48px;
+}
+
+.success-stories-subtitle {
+font-size: 18px;
 }
 
 .success-stories-lists {
   margin-bottom: 120px;
-  /* display: flex; Swiper сам применяет, но явно указываем для надёжности */
 }
 
 }
-
-/* Desktop */
-@media only screen and (min-width: 1440px) {
-
-
-.success-stories-title {
-        font-size: var( --heading-2);
-}
-
-.success-stories-subtitle {
-font-size: var(--text-medium);
-}
-
-  }
