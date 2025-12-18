@@ -54,7 +54,7 @@
 .animal-details-age-and-gender-list {
   display: flex;
 }
-@media (min-width: 375px) {
+@media (max-width: 768px) {
   .animal-details-content-container {
     font-size: 12px;
   }
