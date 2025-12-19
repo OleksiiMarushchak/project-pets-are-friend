@@ -14,7 +14,7 @@ const orderForm = {
                 <span class="validation js-name-validation">Максимальна довжина ${this.validation.lengthLimits.name} символи</span></div>
                  <div class='order-form-phone-block'>
                 <label for="phone">Телефон*</label>
-                <input type="text" name="phone" id="phone" placeholder="+38 (095) 555 99 22">
+                <input type="text" name="phone" id="phone" placeholder="38 (095) 555 99 22">
                  <span class="validation js-phone-validation">Очікується ${this.validation.lengthLimits.phone} цифр</span></div>
                  <div class='order-form-comment-block'><label for="comment">Коментар</label>
                 <textarea type="textarea" name="comment" id="comment" placeholder="Напишіть ваш коментар"></textarea>
@@ -45,9 +45,20 @@ const orderForm = {
         (params.comment = form.get('comment').trim());
       const validationPassed = this.validation.formValidation(params);
       if (!validationPassed) {
+        if (this.validation.message.notEmpty.name) {
+          const validationLabel =
+            orderForm.querySelector(`.js-name-validation`);
+          orderForm.elements.name.classList.add('input-error');
+          validationLabel.classList.add('error');
+        }
+        if (this.validation.message.notEmpty.phone) {
+          const validationLabel =
+            orderForm.querySelector(`.js-phone-validation`);
+          orderForm.elements.phone.classList.add('input-error');
+          validationLabel.classList.add('error');
+        }
         return;
       }
-      notification.openSuccessAlert(`${params.name}, Ваш запит відправлено.`);
       const data = await postOrder(params);
       e.target.reset();
       baseModal.closeModal();
@@ -57,9 +68,8 @@ const orderForm = {
     });
   },
   formInputHandler() {
-    let timeoutId;
     const orderForm = this.getFormEle();
-    orderForm.addEventListener('input', async e => {
+    orderForm.addEventListener('input', e => {
       let handleCheck;
       let maxLength;
       let inputName;
@@ -85,24 +95,25 @@ const orderForm = {
         }
       }
       e.target.classList.remove('input-error');
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        const validationLabel = orderForm.querySelector(
-          `.js-${inputName}-validation`
-        );
-        let outputValue = e.target.value;
-        if (inputName === 'phone') {
-          outputValue = this.validation.cleanPhoneValue(e.target.value);
-        }
-        validationLabel.innerHTML = `${outputValue.length} з ${maxLength}`;
-        if (!handleCheck()) {
-          e.target.classList.add('input-error');
-          validationLabel.classList.add('error');
-        } else {
-          e.target.classList.remove('input-error');
-          validationLabel.classList.remove('error');
-        }
-      }, 500);
+      const validationLabel = orderForm.querySelector(
+        `.js-${inputName}-validation`
+      );
+      let outputValue = e.target.value;
+      if (inputName === 'phone') {
+        outputValue = this.validation.cleanPhoneValue(e.target.value);
+        e.target.value = this.validation.formatPhone(outputValue);
+      }
+      validationLabel.innerHTML = `${Math.min(
+        outputValue.length,
+        this.validation.lengthLimits.phone
+      )} з ${maxLength}`;
+      if (!handleCheck()) {
+        e.target.classList.add('input-error');
+        validationLabel.classList.add('error');
+      } else {
+        e.target.classList.remove('input-error');
+        validationLabel.classList.remove('error');
+      }
     });
   },
   formFocusInHandler() {
@@ -221,6 +232,16 @@ const orderForm = {
         notification.errorAlert(accuMessage);
       }
       return validationPassed;
+    },
+    formatPhone(inputValue) {
+      let formatedValue = '';
+      if (inputValue.length > 0) formatedValue += inputValue.slice(0, 2);
+      if (inputValue.length > 2) formatedValue += ' (' + inputValue.slice(2, 5);
+      if (inputValue.length > 5) formatedValue += ') ' + inputValue.slice(5, 8);
+      if (inputValue.length > 8) formatedValue += ' ' + inputValue.slice(8, 10);
+      if (inputValue.length > 10)
+        formatedValue += ' ' + inputValue.slice(10, 12);
+      return formatedValue;
     },
   },
 };
