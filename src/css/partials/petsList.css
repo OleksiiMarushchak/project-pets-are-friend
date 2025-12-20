@@ -253,7 +253,7 @@
   padding: 12px 24px;
   width: 58px;
   height: 48px;
-  border: 1px solid #B3B4B5;
+  border: none;
   border-radius: 8px;
   font-size: 16px;
   color: #02060A;
@@ -263,7 +263,7 @@
 
 .pagination .tui-first:hover,
 .pagination .tui-last:hover {
-  background: var(--color-mariner-light);
+  background: #B3B4B5;
 }
 
 .pagination .tui-next {
@@ -277,12 +277,16 @@
   padding: 12px 24px;
   width: 58px;
   height: 48px;
-  border: 1px solid #B3B4B5;
+  border: none;
   border-radius: 8px;
   font-size: 16px;
   color: #02060A;
   background: transparent;
   cursor: pointer;
+}
+
+.pagination-page:hover {
+  background: #B3B4B5;
 }
 
 .pagination .tui-prev:hover,
@@ -291,13 +295,14 @@
   border-color: #02060A;
 }
 
-.pagination-page:hover {
-  background: var(--color-mariner-light);
-}
-
 .pagination-page.active {
   background: var(--color-mariner-lighter);
-  border-color: var(--opacity-transparent);
+  border: 1px solid #B3B4B5;
+  padding: 11px 23px;
+}
+
+.pagination-page.active:hover {
+  border-color: #02060A;
 }
 
 .pagination .tui-prev,
@@ -317,7 +322,7 @@
 
 .pagination .tui-next use,
 .pagination .tui-next.tui-is-disabled use {
-  href: "/images/sprite.svg#icon-arrow-forward";
+  href: "./images/sprite.svg#icon-arrow-forward";
 }
 
 .pagination-arrow-icon {
