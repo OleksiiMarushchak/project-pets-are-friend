@@ -81,4 +81,25 @@
     pointer-events: all;
     transition: visibility 1s ease, opacity 1s ease;
   }
+  a.footer-nav-link {
+    text-decoration: none;
+    color: var(--neutral-darkest);
+    position: relative;
+  }
+  a.footer-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -25%;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--neutral-darkest);
+    transition: all 0.3s ease;
+  }
+
+  a.footer-nav-link:hover::after,
+  a.footer-nav-link:focus::after {
+    width: 100%;
+    left: 0;
+  }
 }
